@@ -1,32 +1,44 @@
-// C++ program to implement iterative Binary Search
-#include <bits/stdc++.h>
+#include<iostream>
 using namespace std;
 
-int binarySearch(int arr[], int l, int r, int x)
-{
-	while (l <= r) {
-		int m = l + (r - l) / 2;
-		if (arr[m] == x)
-			return m;
 
-		if (arr[m] < x)
-			l = m + 1;
-		else
-			r = m - 1;
-	}
-	return -1;
-}
+  int countZeros(int arr[],int n)
+  {
+   int low=0;
+   int high=n-1;
+    
+    while(low<=high)
+    {
+      int mid=(low+high)/2;
+      if(arr[mid]==1)
+      {
+        low =mid+1;
+        
+      }
+      else
+      {
+        high=mid-1;
+      }
+    }
+    return (n-low);
+    }
+ 
 
-// Driver code
-int main(void)
+int main()
 {
-	int arr[] = { 2, 3, 4, 10, 40 };
-	int x = 10;
-	int n = sizeof(arr) / sizeof(arr[0]);
-	int result = binarySearch(arr, 0, n - 1, x);
-	(result == -1)
-		? cout << "Element is not present in array"
-		: cout << "Element is present at index " << result;
-	return 0;
+  int n;
+  int arr[n];
+  cout<<"Enter the size of Array :";
+  cin>>n;
+  cout<<"Enter array in binary format in which first 1's followed by zeros :";
+  for(int i=0;i<n;i++)
+  {
+    cin>>arr[i];
+  }
+  
+  int count=countZeros(arr,n);
+  
+  cout<<"Number of zeros in binary array :"<<count<<endl;
+return 0;
 }
 
